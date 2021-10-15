@@ -41,6 +41,9 @@ def add_game(db):
                 "gameScore": gameScore}
     db.collection("games").document(nameOfGame).set(gameData)
 
+    print()
+    print("Game added to database!")
+
     log_transaction(db, f"You have added the game, {nameOfGame} , with {hoursPlayed} hours played , and you gave it a {gameScore} out of 10.")
 
 def checkGameList(db):
@@ -127,6 +130,8 @@ def main():
         print("4) Edit Game Information (Hours Played, Score)")
         choice = input(f"> ")
         print()
+        if choice == "0":
+            print("Thank you for using the program! Game on!")
         if choice == "1":
             add_game(db)
         elif choice == "2":
